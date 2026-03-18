@@ -37,6 +37,24 @@ function sanitizeProducto(req, res, next) {
   } catch (error) {
     res.status(500).json({ message: 'Error interno del servidor' });
   }
+} 
+  function sanitizeCategoria(req, res, next) {
+  try {
+    req.body.sanitizedInput = {
+      nombre:      req.body.nombre,
+    };
+
+    Object.keys(req.body.sanitizedInput).forEach((key) => {
+      if (req.body.sanitizedInput[key] === undefined) {
+        delete req.body.sanitizedInput[key];
+      }
+    });
+
+    next();
+  } catch (error) {
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
 }
 
-module.exports = { sanitizeInput, sanitizeProducto };
+
+module.exports = { sanitizeInput, sanitizeProducto, sanitizeCategoria };

@@ -1,0 +1,22 @@
+// AGREGAR COMENTARIOS
+
+### Put de reseñas
+POST http://localhost:3000/api/categorias
+Content-Type: application/json
+
+{
+  "nombre": "Camperas"
+}
+
+###
+GET http://localhost:3000/api/categorias
+Content-Type: application/json
+
+###
+
+PUT http://localhost:3000/api/categorias/1
+Content-Type: application/json
+
+{
+  "nombre": "Camperas"
+}
