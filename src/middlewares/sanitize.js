@@ -20,11 +20,11 @@ function sanitizeInput(req, res, next) {
 function sanitizeProducto(req, res, next) {
   try {
     req.body.sanitizedInput = {
-      nombre:      req.body.nombre,
-      precio:      req.body.precio,
-      imagen:      req.body.imagen,
-      categoria:   req.body.categoria,
-      descripcion: req.body.descripcion,
+      nombre:       req.body.nombre,
+      precio:       req.body.precio,
+      imagen:       req.body.imagen,
+      categoria_id: req.body.categoria_id,
+      descripcion:  req.body.descripcion,
     };
 
     Object.keys(req.body.sanitizedInput).forEach((key) => {

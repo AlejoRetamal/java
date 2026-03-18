@@ -20,15 +20,26 @@ const productoController = {
     }
   },
 
-  create: async (req, res) => {
-    try {
-      const { nombre, precio, imagen, categoria, descripcion } = req.body.sanitizedInput;
-      const id = await ProductoModel.create({ nombre, precio, imagen, categoria, descripcion });
-      res.status(201).json({ id, nombre, precio, imagen, categoria, descripcion });
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
-  },
-};
+create: async (req, res) => {
+  try {
+    const { nombre, precio, imagen, categoria_id, descripcion } = req.body.sanitizedInput;
+    const id = await ProductoModel.create({ nombre, precio, imagen, categoria_id, descripcion });
+    res.status(201).json({ id, nombre, precio, imagen, categoria_id, descripcion });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+},
+
+update: async (req, res) => {
+  try {
+    const { nombre, precio, imagen, categoria_id, descripcion } = req.body.sanitizedInput;
+    const updated = await ProductoModel.update(req.params.id, { nombre, precio, imagen, categoria_id, descripcion });
+    if (!updated) return res.status(404).json({ message: 'Producto no encontrado' });
+    res.json({ id: req.params.id, nombre, precio, imagen, categoria_id, descripcion });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+ },
+}
 
 module.exports = productoController;

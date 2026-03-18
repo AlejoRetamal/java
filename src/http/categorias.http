@@ -5,8 +5,36 @@ POST http://localhost:3000/api/categorias
 Content-Type: application/json
 
 {
-  "nombre": "Camperas"
+  "nombre": "Accesorios"
 }
+
+###
+
+DELETE http://localhost:3000/api/categorias/
+Content-Type: application/json
+
+{
+  "nombre": "Tops"
+}
+
+###
+
+POST http://localhost:3000/api/categorias
+Content-Type: application/json
+
+{
+  "nombre": "remeras"
+}
+
+###
+
+POST http://localhost:3000/api/categorias
+Content-Type: application/json
+
+{
+  "nombre": "buzos"
+}
+
 
 ###
 GET http://localhost:3000/api/categorias
