@@ -1,0 +1,24 @@
+// AGREGAR COMENTARIOS
+
+### Put de reseñas
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "name": "Demether alnava",
+  "email": "demether@gmail.com"
+}
+
+###
+GET http://localhost:3000/api/users
+Content-Type: application/json
+
+###
+
+PUT http://localhost:3000/api/users/2
+Content-Type: application/json
+
+{
+  "name": "Demether Alnava",
+  "email": "demether@gmail.com"
+}
