@@ -40,6 +40,15 @@ update: async (req, res) => {
     res.status(500).json({ error: err.message });
   }
  },
+
+ getByCategoria: async (req, res) => {
+  try {
+    const productos = await ProductoModel.getByCategoria(req.params.categoria_id);
+    res.json(productos);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+ },
 }
 
 module.exports = productoController;

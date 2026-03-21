@@ -40,6 +40,16 @@ const ProductoModel = {
     const [result] = await pool.query('DELETE FROM productos WHERE id = ?', [id]);
     return result.affectedRows > 0;
   },
+
+  getByCategoria: async (categoria_id) => {
+  const [rows] = await pool.query(`
+    SELECT p.*, c.nombre AS categoria
+    FROM productos p
+    LEFT JOIN categorias c ON p.categoria_id = c.id
+    WHERE p.categoria_id = ?
+    `, [categoria_id]);
+    return rows;
+  },
 };
 
 module.exports = ProductoModel;

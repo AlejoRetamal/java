@@ -56,5 +56,29 @@ function sanitizeProducto(req, res, next) {
   }
 }
 
+function sanitizeOrden(req, res, next) {
+  try {
+    req.body.sanitizedInput = {
+      nombre:    req.body.nombre,
+      apellido:  req.body.apellido,
+      email:     req.body.email,
+      telefono:  req.body.telefono,
+      domicilio: req.body.domicilio,
+      ciudad:    req.body.ciudad,
+      total:     req.body.total,
+      items:     req.body.items,
+    };
 
-module.exports = { sanitizeInput, sanitizeProducto, sanitizeCategoria };
+    Object.keys(req.body.sanitizedInput).forEach((key) => {
+      if (req.body.sanitizedInput[key] === undefined) {
+        delete req.body.sanitizedInput[key];
+      }
+    });
+
+    next();
+  } catch (error) {
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+}
+
+module.exports = { sanitizeInput, sanitizeProducto, sanitizeCategoria, sanitizeOrden };
